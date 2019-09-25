@@ -2,13 +2,11 @@ package com.mdevi.sfgpetclinic.services;
 
 import com.mdevi.sfgpetclinic.model.Vet;
 
-import java.util.Set;
+/**
+ * Interface for CRUD operations for Vet entity.
+ *
+ * @author Sergei Belonosov
+ */
+public interface VetService extends CrudService<Vet, Long> {
 
-public interface VetService {
-
-    Vet findById(Long id);
-
-    Vet save(Vet vet);
-
-    Set<Vet> findAll();
 }
