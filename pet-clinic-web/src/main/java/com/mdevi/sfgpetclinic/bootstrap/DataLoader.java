@@ -1,7 +1,5 @@
 package com.mdevi.sfgpetclinic.bootstrap;
 
-import com.mdevi.sfgpetclinic.map.OwnerServiceMap;
-import com.mdevi.sfgpetclinic.map.VetServiceMap;
 import com.mdevi.sfgpetclinic.model.Owner;
 import com.mdevi.sfgpetclinic.model.Vet;
 import com.mdevi.sfgpetclinic.services.OwnerService;
@@ -19,9 +17,10 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader() {
-        this.ownerService = new OwnerServiceMap();
-        this.vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
@@ -40,7 +39,7 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner2);
 
-        System.out.println("Loaded Owners...");
+        //System.out.println("Loaded Owners...");
         LOG.info("Owners data loaded...");
 
         Vet vet1 = new Vet();
@@ -57,7 +56,7 @@ public class DataLoader implements CommandLineRunner {
 
         vetService.save(vet2);
 
-        System.out.println("Loaded Vets...");
+        //System.out.println("Loaded Vets...");
         LOG.info("Vets data loaded...");
     }
 }
