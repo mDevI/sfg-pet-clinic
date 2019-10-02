@@ -1,8 +1,10 @@
 package com.mdevi.sfgpetclinic.bootstrap;
 
 import com.mdevi.sfgpetclinic.model.Owner;
+import com.mdevi.sfgpetclinic.model.PetType;
 import com.mdevi.sfgpetclinic.model.Vet;
 import com.mdevi.sfgpetclinic.services.OwnerService;
+import com.mdevi.sfgpetclinic.services.PetTypeService;
 import com.mdevi.sfgpetclinic.services.VetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,15 +18,26 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
 
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType savedDogType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        PetType savedCatType = petTypeService.save(cat);
+
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
