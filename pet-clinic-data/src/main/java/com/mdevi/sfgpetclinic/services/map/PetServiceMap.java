@@ -1,4 +1,4 @@
-package com.mdevi.sfgpetclinic.map;
+package com.mdevi.sfgpetclinic.services.map;
 
 import com.mdevi.sfgpetclinic.model.Pet;
 import com.mdevi.sfgpetclinic.services.PetService;
