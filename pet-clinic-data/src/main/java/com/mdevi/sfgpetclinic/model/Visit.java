@@ -1,12 +1,20 @@
 package com.mdevi.sfgpetclinic.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "visits")
 public class Visit extends BaseEntity {
 
+    @Column(name = "date")
     private LocalDate date;
+    @Column(name = "description")
     private String description;
-    private Integer petId;
+
+    @ManyToOne
+    @JoinColumn(name = "pet_id")
+    private Pet pet;
 
     public Visit() {
         this.date = LocalDate.now();
@@ -28,11 +36,11 @@ public class Visit extends BaseEntity {
         this.description = description;
     }
 
-    public Integer getPetId() {
-        return petId;
+    public Pet getPet() {
+        return pet;
     }
 
-    public void setPetId(Integer petId) {
-        this.petId = petId;
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 }
