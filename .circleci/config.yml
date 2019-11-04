@@ -46,9 +46,3 @@ jobs:
       - run:
           name: Analyze on SonarCloud
           command: mvn verify sonar:sonar -Dsonar.projectKey=mDevI_sfg-pet-clinic -Dsonar.organization=mdevi -Dsonar.host.url=https://sonarcloud.io
-
-workflows:
-  main:
-    jobs:
-      - build:
-          context: SonarCloud
