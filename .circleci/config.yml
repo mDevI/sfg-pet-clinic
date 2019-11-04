@@ -30,6 +30,10 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run:
+        name: Analyze on SonarCloud
+        command: mvn verify sonar:sonar -Dsonar.projectKey=mDevI_sfg-pet-clinic -Dsonar.organization=mdevi -Dsonar.host.url=https://sonarcloud.io
+
       - run: mvn install -DskipTests
 
       - run: mvn dependency:go-offline
@@ -41,3 +45,9 @@ jobs:
 
       # run tests!
       - run: mvn integration-test
+
+workflows:
+  main:
+    jobs:
+      - build:
+          context: SonarCloud
